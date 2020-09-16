@@ -9,9 +9,15 @@ def index(request):
     })
 
 def get_content(request, title):
-    return render(request,"encyclopedia/entries.html", {
-        "title": title,
-        "content": util.get_entry(title)
-
-    })
+    get_entry = util.get_entry(title)
+    if get_entry == None:
+        return render(request, "encyclopedia/error.html", {
+            "title": title.upper(),
+        })           
+        
+    else:
+        return render(request,"encyclopedia/entries.html", {
+            "title": title.upper(),
+            "content": util.get_entry(title)
+        })
 
