@@ -6,5 +6,6 @@ app_name = "encyclopedia"
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("<str:title>", views.get_content, name="get_content")
+    path("wiki/<str:title>", views.get_content, name="get_content"),
+    path("search/", views.search, name="search"),
 ]
